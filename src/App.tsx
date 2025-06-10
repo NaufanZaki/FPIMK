@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
-import { Mail, Phone, MapPin, Menu, X, BrainCircuit, Code, Smartphone, Star, ArrowRight, Search, Edit3, Code2, Rocket, Eye, PenTool, Database, ShieldCheck, BarChart } from 'lucide-react';
+import { Mail, Phone, MapPin, BrainCircuit, Code, Smartphone, Star, ArrowRight, Search, Edit3, Code2, Rocket, Eye, PenTool, Database, ShieldCheck, BarChart } from 'lucide-react';
 import * as THREE from 'three';
-import FloatingCard from './components/FloatingCard'; // ← default import
+import FloatingCard from './components/FloatingCard';
+import { motion } from 'framer-motion';
+import TentangSection from './components/TentangSection';
+import Header from './components/Header';
 
-
-
-// --- Type Definitions ---
 interface FadeInProps {
   children: ReactNode;
   direction?: 'up' | 'down' | 'left' | 'right';
@@ -28,8 +28,6 @@ interface SectionWrapperProps {
 interface SectionTitleProps {
   children: ReactNode;
 }
-
-// --- Helper Hooks & Components ---
 
 const useOnScreen = (options?: IntersectionObserverInit) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -203,14 +201,6 @@ const HeroCanvas: FC = () => {
 
 
 
-// --- Page Sections & Components ---
-
-
-
-// --- NEW HERO SECTION ---
-import { motion } from 'framer-motion';
-import TentangSection from './components/TentangSection';
-import Header from './components/Header';
 
 const Hero: FC = () => {
   return (
@@ -248,7 +238,7 @@ const Hero: FC = () => {
       </div>
 
       {/* 3D Crystal Canvas */}
-      <div className="relative h-full w-full z-10">
+      <div className="absolute inset-0 md:relative md:inset-auto h-full w-full z-10">
         <HeroCanvas />
         <div className="absolute inset-0 pointer-events-none">
           <FloatingCard text="Web Development" style={{ top: '20%', left: '10%' }} />
@@ -375,34 +365,34 @@ const Services: FC = () => {
       <SectionTitle>Layanan Unggulan</SectionTitle>
       <div className="grid lg:grid-cols-3 gap-8 items-start">
         <FadeIn direction="left" className="lg:col-span-1">
-          <div className="flex lg:flex-col gap-4">
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
             {(Object.keys(servicesData) as ServiceKey[]).map(key => (
               <button
                 key={key}
                 onClick={() => setActiveTab(key)}
-                className={`w-full p-6 rounded-xl text-left transition-all duration-300 border-2 ${activeTab === key ? 'bg-slate-700/80 border-cyan-400' : 'bg-slate-800/50 border-slate-700 hover:bg-slate-700/50'}`}
+                className={`w-full p-4 sm:p-6 rounded-xl text-left transition-all duration-300 border-2 ${activeTab === key ? 'bg-slate-700/80 border-cyan-400' : 'bg-slate-800/50 border-slate-700 hover:bg-slate-700/50'}`}
               >
-                <div className="flex items-center">
-                  <div className={`mr-4 ${activeTab === key ? 'text-cyan-400' : 'text-gray-400'}`}>{servicesData[key].icon}</div>
-                  <h3 className="text-lg font-semibold text-white">{servicesData[key].title}</h3>
+                <div className="flex items-center flex-wrap gap-3 sm:gap-4">
+                  <div className={`${activeTab === key ? 'text-cyan-400' : 'text-gray-400'}`}>{servicesData[key].icon}</div>
+                  <h3 className="text-base sm:text-lg font-semibold text-white">{servicesData[key].title}</h3>
                 </div>
               </button>
             ))}
           </div>
         </FadeIn>
         <FadeIn direction="right" className="lg:col-span-2">
-          <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 min-h-[300px]">
-            <h3 className="text-2xl font-bold text-white mb-2">{activeService.title}</h3>
-            <p className="text-gray-400 mb-8">{activeService.description}</p>
-            <div className="space-y-6 border-t border-slate-700 pt-6">
+          <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-4 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{activeService.title}</h3>
+            <p className="text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">{activeService.description}</p>
+            <div className="space-y-4 sm:space-y-6 border-t border-slate-700 pt-4 sm:pt-6">
               {activeService.details.map(detail => (
-                <div key={detail.name} className="flex items-start">
-                  <div className="p-2 bg-slate-700/50 rounded-md mr-4 text-cyan-400 border border-slate-600">
+                <div key={detail.name} className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0 p-2 bg-slate-700/50 rounded-md text-cyan-400 border border-slate-600">
                     {detail.icon}
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-white">{detail.name}</h4>
-                    <p className="text-gray-500 text-sm">{detail.desc}</p>
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-white text-sm sm:text-base">{detail.name}</h4>
+                    <p className="text-gray-500 text-xs sm:text-sm break-words">{detail.desc}</p>
                   </div>
                 </div>
               ))}
