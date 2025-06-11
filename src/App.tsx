@@ -415,17 +415,23 @@ const Process: FC = () => {
   return (
     <SectionWrapper id="proses">
       <SectionTitle>Proses Kerja Kami</SectionTitle>
-      <div className="relative max-w-2xl mx-auto">
-        <div className="absolute left-9 top-0 h-full w-0.5 bg-slate-700" aria-hidden="true"></div>
-        <div className="space-y-16">
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6">
+        {/* Garis vertikal */}
+        <div className="absolute top-10 bottom-10 left-[49px] sm:left-[64px] w-0.5 bg-slate-700 z-0" />
+  
+        <div className="space-y-16 relative z-10">
           {processSteps.map((step, index) => (
             <FadeIn key={index} direction="up">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-20 h-20 bg-slate-800 border-2 border-slate-700 rounded-full flex items-center justify-center text-cyan-400 z-10">
+              <div className="flex items-start gap-6">
+                {/* Bullet Icon */}
+                <div className="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full border-2 border-slate-700 bg-slate-800 text-cyan-400 shrink-0">
                   {step.icon}
                 </div>
-                <div className="ml-8">
-                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                {/* Text */}
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    {step.title}
+                  </h3>
                   <p className="text-gray-400">{step.description}</p>
                 </div>
               </div>
@@ -434,7 +440,7 @@ const Process: FC = () => {
         </div>
       </div>
     </SectionWrapper>
-  );
+  );  
 };
 
 const Testimonials: FC = () => {
