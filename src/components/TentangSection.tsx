@@ -38,7 +38,7 @@ const TentangSection: React.FC = () => {
   const x = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "-66.66%"]);
 
   // Add an opacity transform for a fade-in/fade-out effect
-  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
+  // const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
 
   return (
     // The parent element with a defined height to create the scroll "runway"
@@ -52,7 +52,7 @@ const TentangSection: React.FC = () => {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-900 to-transparent z-20 pointer-events-none" />
         
         {/* The moving element, animated with Framer Motion for horizontal scroll and opacity */}
-        <motion.div style={{ x, opacity }} className="flex h-full w-[300vw] items-center">
+        <motion.div style={{x}} className="flex h-full w-[300vw] items-center">
           {slides.map((slide, index) => (
             <div key={index} className="w-screen h-full flex flex-col items-center justify-center p-8 text-center">
               {slide.icon}

@@ -6,6 +6,7 @@ import FloatingCard from './components/FloatingCard';
 import { motion } from 'framer-motion';
 import TentangSection from './components/TentangSection';
 import Header from './components/Header';
+import Chatbot from './components/Chatbot';
 
 interface FadeInProps {
   children: ReactNode;
@@ -592,6 +593,7 @@ const App: FC = () => {
         <Contact />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 }
