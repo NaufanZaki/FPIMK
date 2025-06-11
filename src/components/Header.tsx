@@ -39,7 +39,7 @@ const Header: FC = () => {
 							className="text-3xl font-bold text-white tracking-wider"
 						>
 							<img
-								src="/public/images/wordmark-logo-white.png"
+								src="/images/wordmark-logo-white.png"
 								alt="Logo"
 								className="h-10 inline-block"
 							/>

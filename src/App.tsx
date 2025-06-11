@@ -753,22 +753,22 @@ const Portfolio: FC = () => {
 		{
 			title: "Dashboard Prediksi Penjualan",
 			category: "AI / Web",
-			image: "/public/images/dashboard-sales-example.png",
+			image: "/images/dashboard-sales-example.png",
 		},
 		{
 			title: "Smart Irrigation Sistem",
 			category: "IoT",
-			image: "/public/images/smart-irrigation-example.jpeg",
+			image: "/images/smart-irrigation-example.jpeg",
 		},
 		{
 			title: "Website Company Profile",
 			category: "Web",
-			image: "/public/images/web-compro-example.png",
+			image: "/images/web-compro-example.png",
 		},
 		{
 			title: "Chatbot Kampus",
 			category: "AI",
-			image: "/public/images/chabot-kampus-example.png",
+			image: "/images/chabot-kampus-example.png",
 		},
 	];
 	return (
